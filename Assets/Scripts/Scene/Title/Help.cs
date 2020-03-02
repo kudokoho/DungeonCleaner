@@ -4,14 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Help : MonoBehaviour
 {
-    /// <summary>
-    /// パネルを格納する変数
-    /// </summary>
-    [SerializeField] GameObject help_panel;
+    // ヘルプパネル
+    [SerializeField] GameObject help_panel = null;
     // Start is called before the first frame update
     void Start()
     {
-        Close();
     }
 
     // Update is called once per frame
@@ -21,14 +18,15 @@ public class Help : MonoBehaviour
     }
 
     /// <summary>
-    /// 操作方法ボタンが押されたときHelpPanelをアクティブにする
+    /// ヘルプボタンが押されたときHelpPanelをアクティブにする
     /// </summary>
-    public void SelectHelpOpenBotton()
+    public void OnOpenBottonClick()
     {
         help_panel.SetActive(true);
     }
 
-    public void Close()
+
+    public void OnCloseBottonClick()
     {
         help_panel.SetActive(false);
     }
