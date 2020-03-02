@@ -15,12 +15,17 @@ public class SceneController:MonoBehaviour
     /// <param name="scene_name"></param>
     public static void LoadScene(string scene_name)
     {
+        Debug.Log("シーンロード開始 " + scene_name);
+
         if (loading_ == null)
         {
             loading_ = GetLoading();
         }
 
-        loading_.Show();
+        if (loading_)
+        {
+            loading_.Show();
+        }
 
         ClearScene();
 
@@ -36,15 +41,22 @@ public class SceneController:MonoBehaviour
     /// <param name="mode">ロードのモード</param>
     static void SceneLoaded(Scene nextScene, LoadSceneMode mode)
     {
+        
+
         SceneManager.sceneLoaded -= SceneLoaded;
         if (loading_ == null)
         {
             loading_ = GetLoading();
         }
-        loading_.Hide();
-
+        if (loading_)
+        {
+            loading_.Hide();
+        }
+        
         // クリアするためにscene_list_に追加
         scene_list_.Add(nextScene);
+
+        Debug.Log("シーンロード完了 " + nextScene.name);
     }
 
     /// <summary>
@@ -61,13 +73,13 @@ public class SceneController:MonoBehaviour
     /// </summary>
     static void ClearScene()
     {
-        foreach(Scene scene in scene_list_)
+        foreach (Scene scene in scene_list_.ToArray())
         {
             if (scene.name != "Boot")
             {
-                Debug.Log("クリア " + scene.name);
-                scene_list_.Remove(scene);
+                Debug.Log("シーンクリア " + scene.name);
                 SceneManager.UnloadSceneAsync(scene);
+                scene_list_.Remove(scene);
             }
         }
     }
