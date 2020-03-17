@@ -11,12 +11,23 @@ public class DungeonScene : MonoBehaviour
         
     }
 
+    int counter = 0;
+
     // Update is called once per frame
     void Update()
     {
         if (player_ == null) return;
 
-        player_.Move(true);
+       // player_.MoveFront();
+
+        counter++;
+
+
+        if(counter == 300)
+        {
+            //player_.Jump();
+            counter = 0;
+        }
 
     }
 }
