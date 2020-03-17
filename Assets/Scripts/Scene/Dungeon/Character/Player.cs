@@ -5,13 +5,12 @@ using UnityEngine;
 public class Player : CharacterBase
 {
     // Start is called before the first frame update
-    void Start()
+    override protected void StartChild()
     {
     }
 
     // Update is called once per frame
-    void Update()
+    override protected  void UpdateChild()
     {
-        
     }
 }
