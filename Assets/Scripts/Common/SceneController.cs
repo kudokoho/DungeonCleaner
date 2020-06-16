@@ -29,7 +29,7 @@ public class SceneController:MonoBehaviour
 
         ClearScene();
 
-        SceneManager.LoadScene(scene_name, LoadSceneMode.Additive);
+        SceneManager.LoadScene(scene_name);
         // シーンロード完了後に呼ぶ関数
         SceneManager.sceneLoaded += SceneLoaded;
     }
