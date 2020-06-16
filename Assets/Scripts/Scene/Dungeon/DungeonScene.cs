@@ -5,10 +5,13 @@ using UnityEngine;
 public class DungeonScene : MonoBehaviour
 {
     [SerializeField] CharacterBase player_ = null;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        DungeonInfo.DungeonState = DungeonInfo.State.GamePlay;
     }
 
     int counter = 0;
